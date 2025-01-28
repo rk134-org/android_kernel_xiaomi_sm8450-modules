@@ -4413,10 +4413,9 @@ else
 endif
 
 # Android wifi state control interface
-ifeq ($(WLAN_CTRL_NAME),)
-	WLAN_CTRL_NAME=wlan
-endif
+ifneq ($(WLAN_CTRL_NAME),)
 ccflags-y += -DWLAN_CTRL_NAME=\"$(WLAN_CTRL_NAME)\"
+endif
 
 # Module information used by KBuild framework
 obj-$(CONFIG_QCA_CLD_WLAN) += $(MODNAME).o
